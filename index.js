@@ -1,11 +1,10 @@
 var PasswordGenerator = function() { 
 
-  var randomString = function(stringLength, chars) {
-    stringLength = stringLength || 12;
-    var result = '';
-    for (var i=0; i<stringLength; i++) {
-      var rnum = Math.floor(Math.random() * chars.length);
-      result += chars.substring(rnum,rnum+1);
+  var generatePassword = function(length, candidates) {
+    var result = "";
+    for (var i = 0; i < length; i++) {
+      var randomNum = Math.floor(Math.random() * candidates.length);
+      result += candidates.substring(randomNum, randomNum + 1);
     }
     return result;
   };
@@ -44,9 +43,9 @@ var PasswordGenerator = function() {
       }
     }
     if (options && options.length) {
-      return randomString(options.length, candidates);
+      return generatePassword(options.length, candidates);
     }
-    return randomString(12, candidates);
+    return generatePassword(12, candidates);
   }
 }
 

@@ -79,7 +79,6 @@ exports.noVowels = function (test) {
   test.done();
 }
 
-
 exports.noAmbiguous = function (test) {
   test.expect(1);
   var options = {
