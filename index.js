@@ -19,7 +19,13 @@ var PasswordGenerator = function() {
           var vowel = vowels[i]
           candidates = candidates.replace(vowel, "");
         };
-        console.log(candidates);
+      }
+      if (options.noAmbiguous) {
+        var letters = "B8G6I1l0OQDS5Z2";
+        for (var i = 0; i < letters.length; i++) {
+          var letter = letters[i]
+          candidates = candidates.replace(letter, "");
+        };
       }
     }
     return util.randomString(length || 5, candidates);

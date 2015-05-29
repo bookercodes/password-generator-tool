@@ -76,3 +76,14 @@ exports.noVowels = function (test) {
   test.ok(/^[^aeiouAEIOU]*$/.test(password))
   test.done();
 }
+
+
+exports.noAmbiguous = function (test) {
+  test.expect(1);
+  var options = {
+    noAmbiguous: true,
+  }
+  var password = PasswordGenerator.generate(12, options);
+  test.ok(/^[^B8G6I1l0OQDS5Z2]*$/.test(password))
+  test.done();
+}
