@@ -15,13 +15,6 @@ exports.passwordLength2 = function(test){
   test.done();
 };
 
-exports.containsOnlyLettersAndNumbersByDefault = function(test){
-  test.expect(1);
-  var password = PasswordGenerator.generate();
-  test.ok(/^[a-zA-Z0-9]*$/.test(password))
-  test.done();
-};
-
 exports.excludeCapitals = function (test) {
   test.expect(1);
   var options = {
@@ -50,5 +43,36 @@ exports.excludeCapitalsAndNumbers = function (test) {
   }
   var password = PasswordGenerator.generate(12, options);
   test.ok(/^[^A-Z0-9]*$/.test(password))
+  test.done()
+;}
+
+exports.excludeCapitalsAndNumbers = function (test) {
+  test.expect(1);
+  var options = {
+    noCapitals: true,
+    noNumbers: true
+  }
+  var password = PasswordGenerator.generate(12, options);
+  test.ok(/^[^A-Z0-9]*$/.test(password))
+  test.done();
+}
+
+exports.noPunctuation = function (test) {
+  test.expect(1);
+  var options = {
+    noPunctuation: true,
+  }
+  var password = PasswordGenerator.generate(12, options);
+  test.ok(/^[^\.,-\/#!$%\^&\*;:{}=\-_`~()]*$/.test(password))
+  test.done();
+}
+
+exports.noVowels = function (test) {
+  test.expect(1);
+  var options = {
+    noVowels: true,
+  }
+  var password = PasswordGenerator.generate(12, options);
+  test.ok(/^[^aeiouAEIOU]*$/.test(password))
   test.done();
 }
