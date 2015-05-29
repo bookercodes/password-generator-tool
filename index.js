@@ -1,6 +1,18 @@
 var util = require("./utility");
 
 var PasswordGenerator = function() { 
+
+
+  String.prototype.removeChars = function(chars) {
+    var copy = this;
+    for (var i = 0; i < chars.length; i++) {
+      var character = chars[i]
+      copy = copy.replace(character, "");
+    };
+    console.log(copy);
+    return copy;
+  };
+
   this.generate = function(length, options) {
   	var candidates = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz.,-/#!$%^&*;:{}=-_`~()]";
     if (options) {
@@ -14,18 +26,10 @@ var PasswordGenerator = function() {
         candidates = candidates.replace(".,-/#!$%^&*;:{}=-_`~()]", "");
       }
       if (options.noVowels) {
-        var vowels = "aeiouAEIOU";
-        for (var i = 0; i < vowels.length; i++) {
-          var vowel = vowels[i]
-          candidates = candidates.replace(vowel, "");
-        };
+        candidates = candidates.removeChars("aeiouAEIOU");
       }
       if (options.noAmbiguous) {
-        var letters = "B8G6I1l0OQDS5Z2";
-        for (var i = 0; i < letters.length; i++) {
-          var letter = letters[i]
-          candidates = candidates.replace(letter, "");
-        };
+        candidates = candidates.removeChars("B8G6I1l0OQDS5Z2");
       }
     }
     return util.randomString(length || 5, candidates);
