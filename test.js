@@ -42,4 +42,13 @@ exports.excludeNumbers = function (test) {
   test.done();
 }
 
-exports.containsA
+exports.excludeCapitalsAndNumbers = function (test) {
+  test.expect(1);
+  var options = {
+    noCapitals: true,
+    noNumbers: true
+  }
+  var password = PasswordGenerator.generate(12, options);
+  test.ok(/^[^A-Z0-9]*$/.test(password))
+  test.done();
+}

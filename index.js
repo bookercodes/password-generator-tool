@@ -5,10 +5,10 @@ var PasswordGenerator = function() {
   	var candidates = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
     if (options) {
       if (options.noCapitals) {
-        candidates = "0123456789abcdefghiklmnopqrstuvwxyz";
+        candidates = candidates.replace("ABCDEFGHIJKLMNOPQRSTUVWXTZ", "");
       }
       if (options.noNumbers) {
-        candidates = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+        candidates = candidates.replace("0123456789", "");
       }
     }
     return util.randomString(length || 5, candidates);
