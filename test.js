@@ -9,9 +9,11 @@ exports.passwordLength = function(test){
 
 exports.passwordLength2 = function(test){
   test.expect(1);
-  var expected = 3;
-  var password = PasswordGenerator.generate(expected);
-  test.equal(password.length, expected);
+  var options = {
+    length: 3
+  }
+  var password = PasswordGenerator.generate(options);
+  test.equal(password.length, options.length);
   test.done();
 };
 
@@ -20,7 +22,7 @@ exports.excludeCapitals = function (test) {
   var options = {
     noCapitals: true
   }
-  var password = PasswordGenerator.generate(12, options);
+  var password = PasswordGenerator.generate(options);
   test.ok(/^[^A-Z]*$/.test(password))
   test.done();
 }
@@ -30,7 +32,7 @@ exports.excludeNumbers = function (test) {
   var options = {
     noNumbers: true
   }
-  var password = PasswordGenerator.generate(12, options);
+  var password = PasswordGenerator.generate(options);
   test.ok(/^[^0-9]*$/.test(password))
   test.done();
 }
@@ -41,7 +43,7 @@ exports.excludeCapitalsAndNumbers = function (test) {
     noCapitals: true,
     noNumbers: true
   }
-  var password = PasswordGenerator.generate(12, options);
+  var password = PasswordGenerator.generate(options);
   test.ok(/^[^A-Z0-9]*$/.test(password))
   test.done()
 ;}
@@ -52,7 +54,7 @@ exports.excludeCapitalsAndNumbers = function (test) {
     noCapitals: true,
     noNumbers: true
   }
-  var password = PasswordGenerator.generate(12, options);
+  var password = PasswordGenerator.generate(options);
   test.ok(/^[^A-Z0-9]*$/.test(password))
   test.done();
 }
@@ -62,7 +64,7 @@ exports.noPunctuation = function (test) {
   var options = {
     noPunctuation: true,
   }
-  var password = PasswordGenerator.generate(12, options);
+  var password = PasswordGenerator.generate(options);
   test.ok(/^[^\.,-\/#!$%\^&\*;:{}=\-_`~()]*$/.test(password))
   test.done();
 }
@@ -72,7 +74,7 @@ exports.noVowels = function (test) {
   var options = {
     noVowels: true,
   }
-  var password = PasswordGenerator.generate(12, options);
+  var password = PasswordGenerator.generate(options);
   test.ok(/^[^aeiouAEIOU]*$/.test(password))
   test.done();
 }
@@ -83,7 +85,7 @@ exports.noAmbiguous = function (test) {
   var options = {
     noAmbiguous: true,
   }
-  var password = PasswordGenerator.generate(12, options);
+  var password = PasswordGenerator.generate(options);
   test.ok(/^[^B8G6I1l0OQDS5Z2]*$/.test(password))
   test.done();
 }

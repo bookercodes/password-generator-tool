@@ -19,7 +19,7 @@ var PasswordGenerator = function() {
     return copy;
   };
 
-  this.generate = function(length, options) {
+  this.generate = function(options) {
     var lowercase = "abcdefghiklmnopqrstuvwxyz";
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
     var numbers = "0123456789";
@@ -43,7 +43,10 @@ var PasswordGenerator = function() {
         candidates = candidates.removeChars("B8G6I1l0OQDS5Z2");
       }
     }
-    return randomString(length || 5, candidates);
+    if (options && options.length) {
+      return randomString(options.length, candidates);
+    }
+    return randomString(5, candidates);
   }
 }
 
