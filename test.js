@@ -3,7 +3,7 @@ var PasswordGenerator = require('./');
 exports.passwordLength = function(test){
   test.expect(1);
   var password = PasswordGenerator.generate();
-  test.equal(password.length, 5);
+  test.equal(password.length, 12);
   test.done();
 };
 

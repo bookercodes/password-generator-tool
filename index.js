@@ -46,7 +46,7 @@ var PasswordGenerator = function() {
     if (options && options.length) {
       return randomString(options.length, candidates);
     }
-    return randomString(5, candidates);
+    return randomString(12, candidates);
   }
 }
 
