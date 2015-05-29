@@ -9,13 +9,12 @@ var PasswordGenerator = function() {
     return result;
   };
 
-  String.prototype.removeChars = function(chars) {
-    var copy = this;
+  var removeChars = function(candidates, chars) {
     for (var i = 0; i < chars.length; i++) {
       var character = chars[i]
-      copy = copy.replace(character, "");
+      candidates = candidates.replace(character, "");
     };
-    return copy;
+    return candidates;
   };
 
   this.generate = function(options) {
@@ -23,7 +22,7 @@ var PasswordGenerator = function() {
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
     var numbers = "0123456789";
     var punct = ".,-/#!$%^&*;:{}=-_`~()]";
-  	var candidates = numbers + lowercase + uppercase + punct;
+    var candidates = numbers + lowercase + uppercase + punct;
 
     if (options) {
       if (options.noCapitals) {
@@ -36,10 +35,10 @@ var PasswordGenerator = function() {
         candidates = candidates.replace(punct, "");
       }
       if (options.noVowels) {
-        candidates = candidates.removeChars("aeiouAEIOU");
+        candidates = removeChars(candidates, "aeiouAEIOU");
       }
       if (options.noAmbiguous) {
-        candidates = candidates.removeChars("B8G6I1l0OQDS5Z2");
+        candidates = removeChars(candidates, "B8G6I1l0OQDS5Z2");
       }
     }
     if (options && options.length) {

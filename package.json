@@ -1,5 +1,5 @@
 {
-  "name": "password-generator",
+  "name": "password-generator-tool",
   "version": "0.0.1",
   "description": "A password generator",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexbooker/password-generator"
+    "url": "https://github.com/passwordtools/password-generator"
   },
   "keywords": [
     "password"
@@ -16,7 +16,7 @@
   "author": "Alex Booker",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alexbooker/password-generator/issues"
+    "url": "https://github.com/passwordtools/password-generator/issues"
   },
   "devDependencies": {}
 }
