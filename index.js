@@ -1,7 +1,14 @@
-var util = require("./utility");
-
 var PasswordGenerator = function() { 
 
+  var randomString = function(stringLength, chars) {
+    stringLength = stringLength || 12;
+    var result = '';
+    for (var i=0; i<stringLength; i++) {
+      var rnum = Math.floor(Math.random() * chars.length);
+      result += chars.substring(rnum,rnum+1);
+    }
+    return result;
+  };
 
   String.prototype.removeChars = function(chars) {
     var copy = this;
@@ -9,7 +16,6 @@ var PasswordGenerator = function() {
       var character = chars[i]
       copy = copy.replace(character, "");
     };
-    console.log(copy);
     return copy;
   };
 
@@ -32,7 +38,7 @@ var PasswordGenerator = function() {
         candidates = candidates.removeChars("B8G6I1l0OQDS5Z2");
       }
     }
-    return util.randomString(length || 5, candidates);
+    return randomString(length || 5, candidates);
   }
 }
 
