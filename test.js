@@ -22,4 +22,14 @@ exports.containsOnlyLettersAndNumbersByDefault = function(test){
   test.done();
 };
 
+exports.excludeCapitals = function (test) {
+  test.expect(1);
+  var options = {
+    noCapitals: true
+  }
+  var password = PasswordGenerator.generate(12, options);
+  test.ok(/^[^A-Z]*$/.test(password))
+  test.done();
+}
+
 exports.containsA

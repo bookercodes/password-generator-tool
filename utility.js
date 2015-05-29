@@ -1,6 +1,5 @@
-exports.randomString = function(stringLength){
+exports.randomString = function(stringLength, chars){
   stringLength = stringLength || 12;
-  var chars = "0123456789abcdefghiklmnopqrstuvwxyz";
   var result = '';
   for (var i=0; i<stringLength; i++) {
     var rnum = Math.floor(Math.random() * chars.length);
