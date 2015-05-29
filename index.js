@@ -20,16 +20,21 @@ var PasswordGenerator = function() {
   };
 
   this.generate = function(length, options) {
-  	var candidates = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz.,-/#!$%^&*;:{}=-_`~()]";
+    var lowercase = "abcdefghiklmnopqrstuvwxyz";
+    var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+    var numbers = "0123456789";
+    var punct = ".,-/#!$%^&*;:{}=-_`~()]";
+  	var candidates = numbers + lowercase + uppercase + punct;
+
     if (options) {
       if (options.noCapitals) {
-        candidates = candidates.replace("ABCDEFGHIJKLMNOPQRSTUVWXTZ", "");
+        candidates = candidates.replace(uppercase, "");
       }
       if (options.noNumbers) {
-        candidates = candidates.replace("0123456789", "");
+        candidates = candidates.replace(numbers, "");
       }
       if (options.noPunctuation) {
-        candidates = candidates.replace(".,-/#!$%^&*;:{}=-_`~()]", "");
+        candidates = candidates.replace(punct, "");
       }
       if (options.noVowels) {
         candidates = candidates.removeChars("aeiouAEIOU");
