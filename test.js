@@ -15,9 +15,11 @@ exports.passwordLength2 = function(test){
   test.done();
 };
 
-exports.containsOnlyLowercaseAndNumbersByDefault = function(test){
+exports.containsOnlyLettersAndNumbersByDefault = function(test){
   test.expect(1);
   var password = PasswordGenerator.generate();
-  test.ok(/^[a-z0-9]*$/.test(password))
+  test.ok(/^[a-zA-Z0-9]*$/.test(password))
   test.done();
 };
+
+exports.containsA
