@@ -1,23 +1,23 @@
-var PasswordGenerator = function() { 
+var passwordGenerator = (function() {
 
-  var generatePassword = function(length, candidates) {
+  function generatePassword (length, candidates) {
     var result = "";
     for (var i = 0; i < length; i++) {
       var randomNum = Math.floor(Math.random() * candidates.length);
       result += candidates.substring(randomNum, randomNum + 1);
     }
     return result;
-  };
+  }
 
-  var removeChars = function(candidates, chars) {
+  function removeChars (candidates, chars) {
     for (var i = 0; i < chars.length; i++) {
-      var character = chars[i]
+      var character = chars[i];
       candidates = candidates.replace(character, "");
-    };
+    }
     return candidates;
-  };
+  }
 
-  this.generate = function(options) {
+  function generate(options) {
     var lowercase = "abcdefghiklmnopqrstuvwxyz";
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
     var numbers = "0123456789";
@@ -46,6 +46,10 @@ var PasswordGenerator = function() {
     }
     return generatePassword(12, candidates);
   }
-}
 
-module.exports = new PasswordGenerator();
+  return {
+    generate: generate
+  };
+}());
+
+module.exports = passwordGenerator;
