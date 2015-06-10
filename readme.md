@@ -2,6 +2,12 @@
 
 Cross-platform password generator built using Node :smile:.
 
+##Installation
+
+```
+$ npm install password-generator-tool
+```
+
 ## Features
 
 - [x] Ability to set password length
